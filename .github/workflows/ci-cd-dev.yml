@@ -43,7 +43,7 @@ jobs:
 
     steps:
       - name: Checkout deployment repo
-        uses: actions/checkout@v4.17
+        uses: actions/checkout@v4.1.7
         with:
           repository: code-review-platform-flow/flow-manifest
           path: manifests
