@@ -1,11 +1,13 @@
 # builder image
 FROM amazoncorretto:17-al2-jdk AS builder
 
+
 RUN mkdir /flow-payment
 WORKDIR /flow-payment
 
 COPY . .
 
+RUN chmod +x gradlew
 RUN ./gradlew clean bootJar
 
 # runtime image
