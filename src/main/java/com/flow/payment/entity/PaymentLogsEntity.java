@@ -3,6 +3,7 @@ package com.flow.payment.entity;
 import java.util.Map;
 
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Where;
 import org.hibernate.type.SqlTypes;
 
 import com.flow.payment.common.entity.BaseEntity;
@@ -14,7 +15,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +27,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Table(name = "payment_logs")
+@Where(clause = "use_yn = true")
 public class PaymentLogsEntity extends BaseEntity {
 
 	@Id
