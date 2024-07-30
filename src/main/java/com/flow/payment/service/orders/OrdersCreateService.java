@@ -23,6 +23,8 @@ public class OrdersCreateService {
 	private final UsersService usersService;
 	private final OrdersService ordersService;
 
+	private static final String ORDER_STATUS_CREATED = "주문서 생성";
+
 	public OrdersResponseDto create(OrdersRequestDto ordersRequestDto) {
 		// 사용자 정보를 이메일로 찾기
 		UsersDto user = usersService.findUsersByEmail(ordersRequestDto.getEmail());
@@ -41,7 +43,7 @@ public class OrdersCreateService {
 			.orderDate(LocalDateTime.now())
 			.customerKey(UUID.randomUUID())
 			.totalAmount(ordersRequestDto.getTotalAmount())
-			.status("주문서 생성")
+			.status(ORDER_STATUS_CREATED)
 			.build();
 	}
 
