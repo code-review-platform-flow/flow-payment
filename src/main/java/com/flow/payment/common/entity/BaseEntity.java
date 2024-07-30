@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,7 @@ public class BaseEntity {
 	private boolean useYn;
 
 	@Column(name = "create_code", updatable = false)
-	private String createCode = "flow-payment";
+	private String createCode;
 
 	@CreatedDate
 	@Column(name = "create_date", updatable = false)
@@ -49,4 +50,10 @@ public class BaseEntity {
 	@Version
 	public int version;
 
+	@PrePersist
+	public void prePersist() {
+		this.createDate = LocalDateTime.now();
+		this.createCode = "flow-payment";
+		this.useYn = true;
+	}
 }

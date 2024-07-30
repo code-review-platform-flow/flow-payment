@@ -32,7 +32,7 @@ public class PaymentsEntity extends BaseEntity {
 	private Long paymentId;
 
 	@Column(name = "user_id", nullable = false)
-	private Integer userId;
+	private Long userId;
 
 	@Column(name = "payment_key", nullable = false, length = 255)
 	private String paymentKey;

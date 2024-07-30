@@ -1,10 +1,6 @@
 package com.flow.payment.entity;
 
-import java.util.Map;
-
-import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.Where;
-import org.hibernate.type.SqlTypes;
 
 import com.flow.payment.common.entity.BaseEntity;
 
@@ -26,27 +22,19 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Table(name = "payment_logs")
+@Table(name = "users")
 @Where(clause = "use_yn = true")
-public class PaymentLogsEntity extends BaseEntity {
+public class UsersEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "log_id")
-	private Long logId;
+	@Column(name = "user_id")
+	private Long userId;
 
-	@Column(name = "order_id", nullable = false)
-	private Long orderId;
+	@Column(name = "email", nullable = false, length = 100)
+	private String email;
 
-	@Column(name = "event_type", nullable = false, length = 50)
-	private String eventType;
-
-	@Column(name = "request")
-	@JdbcTypeCode(SqlTypes.JSON)
-	private Map<String, Object> request;
-
-	@Column(name = "response")
-	@JdbcTypeCode(SqlTypes.JSON)
-	private Map<String, Object> response;
+	@Column(name = "password", nullable = false, length = 255)
+	private String password;
 
 }

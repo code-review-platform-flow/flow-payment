@@ -2,6 +2,7 @@ package com.flow.payment.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class OrderController {
 	private final OrdersCreateService ordersCreateService;
 
 	@PostMapping
-	public ResponseEntity<Void> create(OrdersRequestDto ordersRequestDto) {
+	public ResponseEntity<OrdersResponseDto> create(@RequestBody final OrdersRequestDto ordersRequestDto) {
 		return ResponseEntity.ok().body(ordersCreateService.create(ordersRequestDto));
 	}
 

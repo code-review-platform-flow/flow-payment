@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class OrdersDto {
 
 	private Long orderId;
-	private Integer userId;
+	private Long userId;
 	private UUID customerKey;
 	private LocalDateTime orderDate;
 	private BigDecimal totalAmount;

@@ -36,7 +36,7 @@ public class OrdersEntity extends BaseEntity {
 	private Long orderId;
 
 	@Column(name = "user_id", nullable = false)
-	private Integer userId;
+	private Long userId;
 
 	@Column(name = "customer_key", nullable = false)
 	private UUID customerKey;
