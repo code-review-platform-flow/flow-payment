@@ -8,4 +8,5 @@ import com.flow.payment.entity.OrdersEntity;
 
 @Mapper(componentModel = "spring")
 public interface OrdersMapper extends GenericMapper<OrdersDto, OrdersEntity> {
+
 }
