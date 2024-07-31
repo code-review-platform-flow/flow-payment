@@ -18,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/order")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class OrderController {
 
 	private final OrdersCreateService ordersCreateService;
