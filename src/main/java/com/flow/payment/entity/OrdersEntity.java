@@ -38,6 +38,9 @@ public class OrdersEntity extends BaseEntity {
 	@Column(name = "user_id", nullable = false)
 	private Long userId;
 
+	@Column(name = "toss_order_id", nullable = false)
+	private UUID tossOrderId;
+
 	@Column(name = "customer_key", nullable = false)
 	private UUID customerKey;
 
