@@ -2,6 +2,8 @@ package com.flow.payment.dto.payment.request;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -16,7 +18,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentsConfirmRequestDto {
-	private Long orderId;
+
 	private BigDecimal amount;
+
 	private String paymentKey;
+
+	@JsonProperty("orderId")
+	private String tossOrderId;
 }

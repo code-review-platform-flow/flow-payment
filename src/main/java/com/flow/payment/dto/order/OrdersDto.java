@@ -17,6 +17,7 @@ public class OrdersDto {
 
 	private Long orderId;
 	private Long userId;
+	private UUID tossOrderId;
 	private UUID customerKey;
 	private LocalDateTime orderDate;
 	private BigDecimal totalAmount;

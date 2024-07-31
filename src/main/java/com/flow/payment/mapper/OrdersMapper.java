@@ -19,6 +19,7 @@ public interface OrdersMapper extends GenericMapper<OrdersDto, OrdersEntity> {
 
 	@Mapping(target = "userId", source = "user.userId")
 	@Mapping(target = "orderDate", expression = "java(LocalDateTime.now())")
+	@Mapping(target = "tossOrderId", expression = "java(UUID.randomUUID())")
 	@Mapping(target = "customerKey", expression = "java(UUID.randomUUID())")
 	@Mapping(target = "status", constant = "주문서 생성")
 	OrdersDto toOrdersDto(OrdersRequestDto ordersRequestDto, UsersDto user);

@@ -1,6 +1,6 @@
-package com.flow.payment.dto.payment.response;
+package com.flow.payment.dto.payment.request;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +15,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentsConfirmResponseDto {
-	private String mId;
+public class TossPaymentsRequestDto {
+	private String orderId;
+	private BigDecimal amount;
+	private String paymentKey;
 }

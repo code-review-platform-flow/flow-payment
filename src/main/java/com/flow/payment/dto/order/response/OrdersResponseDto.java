@@ -19,4 +19,5 @@ import lombok.ToString;
 public class OrdersResponseDto {
 	private Long orderId;
 	private UUID customerKey;
+	private String tossOrderId;
 }

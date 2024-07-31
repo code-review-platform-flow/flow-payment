@@ -31,8 +31,8 @@ public class PaymentsEntity extends BaseEntity {
 	@Column(name = "payment_id")
 	private Long paymentId;
 
-	@Column(name = "user_id", nullable = false)
-	private Long userId;
+	@Column(name = "order_id", nullable = false)
+	private Long orderId;
 
 	@Column(name = "payment_key", nullable = false, length = 255)
 	private String paymentKey;
