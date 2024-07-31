@@ -1,13 +1,14 @@
-package com.flow.payment.dto.order.response;
+package com.flow.payment.dto.payment.request;
 
-import java.util.UUID;
+import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @Getter
@@ -16,8 +17,12 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrdersResponseDto {
-	private Long orderId;
-	private UUID customerKey;
+public class PaymentsConfirmRequestDto {
+
+	private BigDecimal amount;
+
+	private String paymentKey;
+
+	@JsonProperty("orderId")
 	private String tossOrderId;
 }
