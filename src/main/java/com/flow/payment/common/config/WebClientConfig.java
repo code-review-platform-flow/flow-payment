@@ -1,4 +1,4 @@
-package com.flow.payment.common;
+package com.flow.payment.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
