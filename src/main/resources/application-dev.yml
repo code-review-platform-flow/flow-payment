@@ -16,6 +16,6 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  toss:
-    payments:
-      widget-secret-key: ${WIDGET_SECRET_KEY}
+toss:
+  payments:
+    widget-secret-key: ${WIDGET_SECRET_KEY}
