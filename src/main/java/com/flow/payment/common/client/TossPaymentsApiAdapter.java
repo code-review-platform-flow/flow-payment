@@ -39,7 +39,7 @@ public class TossPaymentsApiAdapter {
 			.contentType(MediaType.APPLICATION_JSON)
 			.bodyValue(tossPaymentsRequestDto)
 			.retrieve()
-			.onStatus(HttpStatusCode::isError, clientResponse -> handleError(clientResponse))
+			.onStatus(HttpStatusCode::isError, this::handleError)
 			.bodyToMono(TossPaymentsResponseDto.class)
 			.block();
 
