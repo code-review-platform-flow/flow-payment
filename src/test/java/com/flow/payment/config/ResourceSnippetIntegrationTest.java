@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
@@ -15,11 +16,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import com.flow.payment.common.client.TossPaymentsApiAdapter;
 import com.flow.payment.controller.OrderController;
+import com.flow.payment.controller.PaymentsController;
+import com.flow.payment.service.orders.OrdersCreateService;
+import com.flow.payment.service.payment.PaymentsConfirmService;
+import com.flow.payment.service.payment.TossPaymentsService;
 
 @ExtendWith({RestDocumentationExtension.class})
 @WebMvcTest(
 	controllers = {
+		PaymentsController.class,
 		OrderController.class
 	}
 )
@@ -30,6 +37,15 @@ public abstract class ResourceSnippetIntegrationTest {
 
 	@Autowired
 	protected MockMvc mockMvc;
+
+	@MockBean
+	protected OrdersCreateService ordersCreateService;
+
+	@MockBean
+	protected PaymentsConfirmService paymentsConfirmService;
+
+	@MockBean
+	protected TossPaymentsService tossPaymentsService;
 
 	@BeforeEach
 	void setUp(final WebApplicationContext context, final RestDocumentationContextProvider provider) {
