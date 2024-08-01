@@ -32,7 +32,6 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 		OrdersRequestDto request = OrdersRequestDto.builder().email("a1061602@gachon.ac.kr").totalAmount(
 			BigDecimal.valueOf(1000)).build();
 		OrdersResponseDto response = OrdersResponseDto.builder()
-			.orderId(1L)
 			.customerKey(UUID.randomUUID())
 			.tossOrderId(UUID.randomUUID().toString())
 			.build();
@@ -60,7 +59,6 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 						fieldWithPath("totalAmount").description("총 금액")
 					)
 					.responseFields(
-						fieldWithPath("orderId").description("자체 주문 번호"),
 						fieldWithPath("customerKey").description("고객 번호 (UUID)"),
 						fieldWithPath("tossOrderId").description("토스 주문 번호 (UUID)")
 					)
