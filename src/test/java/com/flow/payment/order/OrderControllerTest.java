@@ -43,7 +43,7 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 	OrdersCreateService ordersCreateService;
 
 	@Test
-	@DisplayName("성공")
+	@DisplayName("주문 생성 성공")
 	void createOrderSuccess() throws Exception {
 		OrdersRequestDto request = OrdersRequestDto.builder().email("a1061602@gachon.ac.kr").totalAmount(
 			BigDecimal.valueOf(1000)).build();

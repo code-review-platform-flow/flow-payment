@@ -26,7 +26,7 @@ import com.flow.payment.controller.OrderController;
 @AutoConfigureRestDocs
 public abstract class ResourceSnippetIntegrationTest {
 
-	protected static final String DEFAULT_RESTDOC_PATH = "{class_name}/{method_name}/";
+	protected static final String DEFAULT_RESTDOC_PATH = "{class_name}/{method_name}";
 
 	@Autowired
 	protected MockMvc mockMvc;
