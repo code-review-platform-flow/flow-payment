@@ -1,7 +1,12 @@
+import org.hidetake.gradle.swagger.generator.GenerateSwaggerUI
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.2'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'com.epages.restdocs-api-spec' version '0.18.2'
+    id 'org.hidetake.swagger.generator' version '2.19.2'
 }
 
 group = 'com.flow'
@@ -58,9 +63,54 @@ dependencies {
     implementation 'com.vladmihalcea:hibernate-types-60:2.21.1'
 
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-restassured'
+    testImplementation 'com.epages:restdocs-api-spec-mockmvc:0.19.2'
+    swaggerUI 'org.webjars:swagger-ui:4.11.1'
+    testImplementation 'com.epages:restdocs-api-spec-restassured:0.19.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'com.h2database:h2'
 }
 
+swaggerSources {
+    sample {
+        setInputFile(layout.buildDirectory.file("api-spec/openapi3.json").get().asFile)
+    }
+}
+
+openapi {
+    host = 'localhost:8080'
+    basePath = '/'
+    title = 'flow-payment API 문서'
+    description = 'flow-payment API 문서'
+    version = '1.0.0'
+    format = 'json'
+}
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+tasks.withType(GenerateSwaggerUI).configureEach {
+    dependsOn 'openapi3'
+}
+
+tasks.register('copySwaggerUI', Copy) {
+    dependsOn 'generateSwaggerUISample'
+
+    def generateSwaggerUISampleTask = tasks.named('generateSwaggerUISample', GenerateSwaggerUI).get()
+
+    delete(layout.buildDirectory.file("api-spec/openapi3.json").get().asFile)
+
+    from(generateSwaggerUISampleTask.outputDir)
+    into(layout.buildDirectory.dir("resources/main/static/docs").get().asFile)
+}
+
+tasks.withType(BootJar).configureEach {
+    dependsOn 'copySwaggerUI'
+}
+
+tasks.named('resolveMainClassName') {
+    dependsOn tasks.named('copySwaggerUI')
 }

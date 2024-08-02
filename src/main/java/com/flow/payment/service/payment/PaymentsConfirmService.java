@@ -41,11 +41,11 @@ public class PaymentsConfirmService {
 			.status("결제 성공")
 			.build();
 
-		TossPaymentsResponseDto tossPaymentsResponseDto = tossPaymentsService.postConfirm(tossPaymentsRequest);
+		tossPaymentsService.postConfirm(tossPaymentsRequest);
 
 		paymentsService.save(payments);
 
-		return PaymentsConfirmResponseDto.builder().mId(tossPaymentsResponseDto.getMId()).build();
+		return PaymentsConfirmResponseDto.builder().build();
 	}
 
 }

@@ -15,9 +15,7 @@ import lombok.ToString;
 @ToString
 @Builder
 @EqualsAndHashCode
-@NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PaymentsConfirmResponseDto {
-	private String mId;
 }

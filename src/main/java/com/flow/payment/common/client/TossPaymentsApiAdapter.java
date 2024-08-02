@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.flow.payment.common.exception.CustomNotFoundException;
 import com.flow.payment.common.property.TossPaymentsProperty;
 import com.flow.payment.dto.payment.request.TossPaymentsRequestDto;
 import com.flow.payment.dto.payment.response.TossPaymentsResponseDto;
@@ -39,23 +41,17 @@ public class TossPaymentsApiAdapter {
 			.contentType(MediaType.APPLICATION_JSON)
 			.bodyValue(tossPaymentsRequestDto)
 			.retrieve()
-			.onStatus(HttpStatusCode::isError, clientResponse -> handleError(clientResponse))
+			.onStatus(HttpStatusCode::isError, this::handleError)
 			.bodyToMono(TossPaymentsResponseDto.class)
 			.block();
 
 	}
 
-	private Mono<WebClientResponseException> handleError(ClientResponse clientResponse) {
+	private Mono<Throwable> handleError(ClientResponse clientResponse) {
 		return clientResponse.bodyToMono(String.class)
 			.flatMap(errorBody -> {
 				log.error("Error response from Toss Payments: {}", errorBody);
-				return Mono.error(new WebClientResponseException(
-					"API request failed",
-					clientResponse.statusCode().value(),
-					clientResponse.statusCode().toString(),
-					clientResponse.headers().asHttpHeaders(),
-					errorBody.getBytes(StandardCharsets.UTF_8),
-					StandardCharsets.UTF_8));
+				return Mono.error(new CustomNotFoundException());
 			});
 	}
 

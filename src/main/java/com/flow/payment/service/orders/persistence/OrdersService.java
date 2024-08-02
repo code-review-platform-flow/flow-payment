@@ -5,8 +5,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flow.payment.common.exception.CustomNotFoundException;
 import com.flow.payment.dto.order.OrdersDto;
-import com.flow.payment.dto.users.UsersDto;
 import com.flow.payment.entity.OrdersEntity;
 import com.flow.payment.mapper.OrdersMapper;
 import com.flow.payment.repository.OrdersRepository;
@@ -22,7 +22,7 @@ public class OrdersService {
 
 	public OrdersDto findOrdersByTossOrderId(UUID tossOrderId) {
 		return ordersMapper.toDto(ordersRepository.findOrdersByTossOrderId(tossOrderId)
-			.orElseThrow(() -> new RuntimeException("asdf")));
+			.orElseThrow(CustomNotFoundException::new));
 	}
 
 	@Transactional
