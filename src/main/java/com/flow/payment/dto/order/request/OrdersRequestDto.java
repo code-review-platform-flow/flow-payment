@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class OrdersRequestDto {
 
-	private String email;
+	private Long coffeeId;
 	private BigDecimal totalAmount;
 
 }

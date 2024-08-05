@@ -23,6 +23,7 @@ public class PaymentsConfirmRequestDto {
 
 	private String paymentKey;
 
-	@JsonProperty("orderId")
+	@JsonProperty("tossOrderId")
 	private String tossOrderId;
+
 }

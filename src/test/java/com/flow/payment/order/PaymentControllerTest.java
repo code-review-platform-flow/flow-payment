@@ -66,7 +66,7 @@ public class PaymentControllerTest extends ResourceSnippetIntegrationTest {
 					.requestFields(
 						fieldWithPath("paymentKey").description("paymentKey"),
 						fieldWithPath("amount").description("총 금액"),
-						fieldWithPath("orderId").description("토스 주문 번호 (UUID)")
+						fieldWithPath("tossOrderId").description("토스 주문 번호 (UUID)")
 					)
 					.responseFields()
 					.build()
@@ -106,7 +106,7 @@ public class PaymentControllerTest extends ResourceSnippetIntegrationTest {
 					.requestFields(
 						fieldWithPath("paymentKey").description("paymentKey"),
 						fieldWithPath("amount").description("총 금액"),
-						fieldWithPath("orderId").description("토스 주문 번호 (UUID)")
+						fieldWithPath("tossOrderId").description("토스 주문 번호 (UUID)")
 					)
 					.responseFields()
 					.build()
