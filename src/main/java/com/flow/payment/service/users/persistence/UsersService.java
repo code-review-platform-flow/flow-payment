@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import com.flow.payment.common.exception.CustomNotFoundException;
 import com.flow.payment.dto.users.UsersDto;
-import com.flow.payment.entity.UsersEntity;
 import com.flow.payment.mapper.UsersMapper;
 import com.flow.payment.repository.UsersRepository;
 
