@@ -29,9 +29,11 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 	@Test
 	@DisplayName("주문 생성 성공")
 	void createOrderSuccess() throws Exception {
-		OrdersRequestDto request = OrdersRequestDto.builder().email("a1061602@gachon.ac.kr").totalAmount(
-			BigDecimal.valueOf(1000)).build();
+		OrdersRequestDto request = OrdersRequestDto.builder()
+			.coffeeId(1L)
+			.totalAmount(BigDecimal.valueOf(1000)).build();
 		OrdersResponseDto response = OrdersResponseDto.builder()
+			.orderId(1L)
 			.customerKey(UUID.randomUUID())
 			.tossOrderId(UUID.randomUUID().toString())
 			.build();
@@ -55,10 +57,11 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 					.requestSchema(Schema.schema("주문 생성 요청"))
 					.responseSchema(Schema.schema("주문 생성 응답"))
 					.requestFields(
-						fieldWithPath("email").description("이메일"),
+						fieldWithPath("coffeeId").description("커피챗 ID"),
 						fieldWithPath("totalAmount").description("총 금액")
 					)
 					.responseFields(
+						fieldWithPath("orderId").description("주문서 번호"),
 						fieldWithPath("customerKey").description("고객 번호 (UUID)"),
 						fieldWithPath("tossOrderId").description("토스 주문 번호 (UUID)")
 					)
@@ -69,8 +72,9 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 	@Test
 	@DisplayName("주문 생성 실패")
 	void createOrderFailByEmail() throws Exception {
-		OrdersRequestDto request = OrdersRequestDto.builder().email("a1061602@gmail.com").totalAmount(
-			BigDecimal.valueOf(1000)).build();
+		OrdersRequestDto request = OrdersRequestDto.builder()
+			.coffeeId(1L)
+			.totalAmount(BigDecimal.valueOf(1000)).build();
 
 		given(ordersCreateService.create(request)).willThrow(new CustomNotFoundException());
 
@@ -90,7 +94,7 @@ public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 					.requestSchema(Schema.schema("주문 생성 요청"))
 					.responseSchema(Schema.schema("주문 생성 응답"))
 					.requestFields(
-						fieldWithPath("email").description("이메일"),
+						fieldWithPath("coffeeId").description("커피챗 ID"),
 						fieldWithPath("totalAmount").description("총 금액")
 					)
 					.responseFields()
