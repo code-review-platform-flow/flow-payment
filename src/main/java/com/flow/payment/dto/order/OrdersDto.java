@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class OrdersDto {
 
 	private Long orderId;
-	private Long userId;
+	private Long coffeeId;
 	private UUID tossOrderId;
 	private UUID customerKey;
 	private LocalDateTime orderDate;

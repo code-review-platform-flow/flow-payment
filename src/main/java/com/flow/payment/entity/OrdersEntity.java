@@ -35,8 +35,8 @@ public class OrdersEntity extends BaseEntity {
 	@Column(name = "order_id")
 	private Long orderId;
 
-	@Column(name = "user_id", nullable = false)
-	private Long userId;
+	@Column(name = "coffee_id", nullable = false)
+	private Long coffeeId;
 
 	@Column(name = "toss_order_id", nullable = false)
 	private UUID tossOrderId;

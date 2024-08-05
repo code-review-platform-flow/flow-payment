@@ -25,13 +25,9 @@ public class OrdersCreateService {
 	private final OrdersService ordersService;
 	private final OrdersMapper ordersMapper;
 
-
 	public OrdersResponseDto create(OrdersRequestDto ordersRequestDto) {
-		// 사용자 정보를 이메일로 찾기
-		UsersDto user = usersService.findUsersByEmail(ordersRequestDto.getEmail());
-
 		// 주문 정보를 생성 및 저장
-		OrdersDto newOrder = ordersMapper.toOrdersDto(ordersRequestDto, user);
+		OrdersDto newOrder = ordersMapper.toOrdersDto(ordersRequestDto);
 		OrdersDto savedOrder = ordersService.save(newOrder);
 
 		// 응답 DTO 생성 및 반환

@@ -17,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrdersResponseDto {
+	private Long orderId;
 	private UUID customerKey;
 	private String tossOrderId;
 }
