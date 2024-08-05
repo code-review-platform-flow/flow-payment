@@ -5,13 +5,11 @@ import java.util.UUID;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 import com.flow.payment.common.mapper.GenericMapper;
 import com.flow.payment.dto.order.OrdersDto;
 import com.flow.payment.dto.order.request.OrdersRequestDto;
 import com.flow.payment.dto.order.response.OrdersResponseDto;
-import com.flow.payment.dto.users.UsersDto;
 import com.flow.payment.entity.OrdersEntity;
 
 @Mapper(componentModel = "spring", imports = {LocalDateTime.class, UUID.class})
@@ -25,6 +23,5 @@ public interface OrdersMapper extends GenericMapper<OrdersDto, OrdersEntity> {
 	OrdersDto toOrdersDto(OrdersRequestDto ordersRequestDto);
 
 	OrdersResponseDto toOrdersResponseDto(OrdersDto savedOrder);
-
 
 }

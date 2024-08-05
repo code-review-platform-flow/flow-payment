@@ -9,7 +9,6 @@ import com.flow.payment.dto.payment.PaymentsDto;
 import com.flow.payment.dto.payment.request.PaymentsConfirmRequestDto;
 import com.flow.payment.dto.payment.request.TossPaymentsRequestDto;
 import com.flow.payment.dto.payment.response.PaymentsConfirmResponseDto;
-import com.flow.payment.dto.payment.response.TossPaymentsResponseDto;
 import com.flow.payment.service.orders.persistence.OrdersService;
 import com.flow.payment.service.payment.persistence.PaymentsService;
 
@@ -25,14 +24,15 @@ public class PaymentsConfirmService {
 	private final PaymentsService paymentsService;
 	private final TossPaymentsService tossPaymentsService;
 
-	public PaymentsConfirmResponseDto confirm (PaymentsConfirmRequestDto paymentsConfirmRequestDto) {
+	public PaymentsConfirmResponseDto confirm(PaymentsConfirmRequestDto paymentsConfirmRequestDto) {
 		TossPaymentsRequestDto tossPaymentsRequest = TossPaymentsRequestDto.builder()
 			.paymentKey(paymentsConfirmRequestDto.getPaymentKey())
 			.orderId(paymentsConfirmRequestDto.getTossOrderId())
 			.amount(paymentsConfirmRequestDto.getAmount())
 			.build();
 
-		OrdersDto ordersDto = ordersService.findOrdersByTossOrderId(UUID.fromString(paymentsConfirmRequestDto.getTossOrderId()));
+		OrdersDto ordersDto = ordersService.findOrdersByTossOrderId(
+			UUID.fromString(paymentsConfirmRequestDto.getTossOrderId()));
 
 		PaymentsDto payments = PaymentsDto.builder()
 			.orderId(ordersDto.getOrderId())

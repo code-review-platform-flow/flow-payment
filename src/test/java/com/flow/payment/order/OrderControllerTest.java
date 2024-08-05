@@ -1,8 +1,16 @@
 package com.flow.payment.order;
 
+import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.*;
+import static com.epages.restdocs.apispec.ResourceDocumentation.*;
+import static org.mockito.BDDMockito.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
@@ -14,15 +22,6 @@ import com.flow.payment.common.exception.CustomNotFoundException;
 import com.flow.payment.config.ResourceSnippetIntegrationTest;
 import com.flow.payment.dto.order.request.OrdersRequestDto;
 import com.flow.payment.dto.order.response.OrdersResponseDto;
-
-import static com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.*;
-import static com.epages.restdocs.apispec.ResourceDocumentation.*;
-import static org.mockito.BDDMockito.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.math.BigDecimal;
-import java.util.UUID;
 
 public class OrderControllerTest extends ResourceSnippetIntegrationTest {
 

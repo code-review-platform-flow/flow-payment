@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import com.flow.payment.common.client.TossPaymentsApiAdapter;
 import com.flow.payment.controller.OrderController;
 import com.flow.payment.controller.PaymentsController;
 import com.flow.payment.service.orders.OrdersCreateService;
