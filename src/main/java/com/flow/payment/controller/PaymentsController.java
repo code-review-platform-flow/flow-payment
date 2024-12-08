@@ -21,7 +21,7 @@ public class PaymentsController {
 
 	private final PaymentsConfirmService paymentsConfirmService;
 
-	@PostMapping
+	@PostMapping("")
 	public ResponseEntity<PaymentsConfirmResponseDto> create(
 		@RequestBody final PaymentsConfirmRequestDto paymentsConfirmRequestDto) {
 		return ResponseEntity.ok().body(paymentsConfirmService.confirm(paymentsConfirmRequestDto));
