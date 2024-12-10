@@ -32,6 +32,8 @@ public class TossPaymentsApiAdapter {
 		String authorizations = "Basic " + Base64.getEncoder()
 			.encodeToString((tossPaymentsProperty.getWidgetSecretKey() + ":").getBytes(StandardCharsets.UTF_8));
 
+		log.info(authorizations);
+
 		return webClient.post()
 			.uri("https://api.tosspayments.com/v1/payments/confirm")
 			.header("Authorization", authorizations)
